@@ -1,26 +1,49 @@
 <html>
     <body>
+        <style type="text/css">
+            body {
+                background: url("allison-huang-_u8KhAZRGHs-unsplash.jpg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                text-align: left;
+                color: #fffaf1;
+                text-shadow:2px 2px 6px black;
+            }
+        </style>
         <h1>Perth House Pricing Calculator</h1>
+        <style type="text/css">
+            h1 {
+                text-align: left;
+                color: #fffaf1;
+                font-family:'Gill Sans';
+            }
+        </style>
         <form action = "/" method = "post"> 
             <p>How many bedrooms would you like to have? </p>
                 <p><input type = "number" step = "1" name = "bedroom"></p>
             <p>How many bathrooms would you like to have? </p>
                 <p><input type = "number" step = "1" name = "bathroom"></p>
+            <p>How many garages would you like to have? </p>
+                <p><input type = "number" step = "1" name = "garage"></p>
             <p>How big do you want your house to be? (sqm) </p>
                 <p><input type = "number" step = "1" name = "floor_area"></p>
             <p>How close would you like to live near the CBD?</p>
                 <div><input type = "range" id = "Distance (km)" name = "Distance (km)" step = "0.1" min = "0" max ="60" oninput="rangeValue.innerText=this.value">
                 <label for = "Distance (km)"> km </label></div>
                 <p id="rangeValue">0</p>
-            <p>What is the preferred age of your house?</p>
-                <div><input type = "range" id = "Age" name = "Age" step = "1" min = "0" max ="150" oninput="rangeValue1.innerText=this.value">
-                <label for = "Age"> years </label>
-                <p id="rangeValue1">0</p></div>
             <p><label for = "school">Do you have any school-going children?</label>
                 <select name = "school" id = "school">
                 <option value = "Yes">Yes</option>
                 <option value = "No">No</option></select></p>
             <p><input type = "submit" value = "Enter"></p>
+            <style type="text/css">
+                p {
+                    text-align: left;
+                    color: #fffaf1;
+                    font-family:Calibri;
+                }
+            </style>
         </form>
         <pre>{{result}}</pre>
     </body>

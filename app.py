@@ -19,23 +19,23 @@ def index():
     if request.method == "POST":
         bedroom = request.form.get("bedroom")
         bathroom = request.form.get("bathroom")
+        garage = request.form.get("garage")
         floor_area = request.form.get("floor_area")
-        distance = request.form.get("Distance (km)")
-        age = request.form.get("Age")
+        distance = request.form.get("Distance (km)")*1000
         school = request.form.get("school")
         if school == "Yes":
             near_school = 1
         else:
             near_school = 0           
-        print(bedroom, bathroom, floor_area, distance, age, school)
+        print(bedroom, bathroom, garage, floor_area, distance, school)
         model = joblib.load("Housing Estimates XG")
-        pred = model.predict([[float(bedroom), float(bathroom), float(floor_area), float(distance), float(age), float(near_school)]])
+        pred = model.predict([[float(bedroom), float(bathroom), float(garage), float(floor_area), float(distance), float(near_school)]])
         s = f""" You have entered the following details:
     Number of bedrooms: {bedroom}
     Number of bathrooms: {bathroom}
+    Number of garage: {garage}
     Estimated floor area: {floor_area}
     Distance from CBD: {distance} km
-    Preferred age of house: {age} years
     Any school-going children? {school}
 The predicted house price will be {str(pred[0])} """
         return(render_template("index.html", result = s))
