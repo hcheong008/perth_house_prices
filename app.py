@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[1]:
 
 
 from flask import Flask
 app = Flask(__name__)
 
 
-# In[10]:
+# In[2]:
 
 
 from flask import request, render_template
@@ -28,7 +28,7 @@ def index():
         else:
             near_school = 0           
         print(bedroom, bathroom, garage*1000, floor_area, distance, school)
-        model = joblib.load("Housing Estimates XG")
+        model = joblib.load("Housing Estimates Model")
         pred = model.predict([[float(bedroom), float(bathroom), float(garage)*1000, float(floor_area), float(distance), float(near_school)]])
         s = f""" You have entered the following details:
     Number of bedrooms: {bedroom}
@@ -43,15 +43,9 @@ The predicted house price will be {str(pred[0])} """
         return(render_template("index.html", result = "Model loading..."))
 
 
-# In[11]:
+# In[3]:
 
 
 if __name__== "__main__":
     app.run()
-
-
-# In[ ]:
-
-
-
 
